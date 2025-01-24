@@ -592,7 +592,7 @@ $.extend(erpnext.item, {
 								fieldtype: "Check",
 								label: __("Create a variant with the template image."),
 								fieldname: "use_template_image",
-								default: 0,
+								default: 1,
 						  }
 						: null,
 					{
@@ -742,7 +742,7 @@ $.extend(erpnext.item, {
 				fieldtype: "Check",
 				label: __("Create a variant with the template image."),
 				fieldname: "use_template_image",
-				default: 0,
+				default: 1,
 			});
 		}
 

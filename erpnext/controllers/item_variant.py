@@ -395,11 +395,47 @@ def make_variant_item_code(template_item_code, template_item_name, variant):
 		abbr_or_value = (
 			cstr(attr.attribute_value) if item_attribute[0].numeric_values else item_attribute[0].abbr
 		)
-		abbreviations.append(abbr_or_value)
 
-	if abbreviations:
-		variant.item_code = "{}-{}".format(template_item_code, "-".join(abbreviations))
-		variant.item_name = "{}-{}".format(template_item_name, "-".join(abbreviations))
+
+		if abbr_or_value != '-':
+			abbreviations.append(abbr_or_value)
+
+	if can_convert_to_int(template_item_code):
+		item = frappe.db.sql(
+				"""select item_code 
+				from tabItem where variant_of = %(template_item_code)s
+				order by creation desc
+				LIMIT 1;""",
+				{"template_item_code": template_item_code},
+				as_dict=True,
+			)
+
+		
+		if item:
+			variant.item_code = "{}".format(int(item[0]['item_code'])+1)
+		else:
+			variant.item_code = "{}".format(int(template_item_code)+1)
+
+		if abbreviations:
+			variant.item_name = "{} - {} {}".format(variant.item_code, template_item_name, " ".join(abbreviations))
+		else:
+			variant.item_name = "{} - {}".format(variant.item_code, template_item_name)
+	else:
+		if abbreviations:
+			variant.item_code = "{} - {}".format(template_item_code, " ".join(abbreviations))
+			variant.item_name = "{} - {}".format(template_item_name, " ".join(abbreviations))
+		else:
+			variant.item_code = template_item_code
+			variant.item_name = template_item_name
+
+
+
+def can_convert_to_int(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
 
 
 @frappe.whitelist()

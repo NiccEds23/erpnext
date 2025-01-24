@@ -111,7 +111,20 @@ frappe.ui.form.on("Pick List", {
 							() => frm.trigger("create_delivery_note"),
 							__("Create")
 						);
-					} else {
+					}else if(frm.doc.purpose === "Material Transfer") {
+						frm.add_custom_button(
+							__("Delivery Note"),
+							() => frm.trigger("create_delivery_note"),
+							__("Create")
+						);
+
+						frm.add_custom_button(
+							__("Stock Entry"),
+							() => frm.trigger("create_stock_entry"),
+							__("Create")
+						);
+
+					}else {
 						frm.add_custom_button(
 							__("Stock Entry"),
 							() => frm.trigger("create_stock_entry"),

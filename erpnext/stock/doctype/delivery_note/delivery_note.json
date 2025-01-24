@@ -184,7 +184,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "MAT-DN-.YYYY.-\nMAT-DN-RET-.YYYY.-",
+   "options": "MAT-TF-.YYYY.-\nMAT-TF-RET-.YYYY.-\nCAJ-.YYYY./DO/.MM./\nCAJ/01/.YY..MM..DD.\nCAJ/02/.YY..MM..DD.",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -1405,7 +1405,7 @@
  "idx": 146,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-26 12:44:28.258215",
+ "modified": "2025-01-21 15:24:59.045617",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Delivery Note",

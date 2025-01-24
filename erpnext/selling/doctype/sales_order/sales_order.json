@@ -17,6 +17,7 @@
   "customer_name",
   "tax_id",
   "order_type",
+  "delivery_method",
   "column_break_7",
   "transaction_date",
   "delivery_date",
@@ -164,7 +165,9 @@
   "inter_company_order_reference",
   "campaign",
   "party_account_currency",
-  "connections_tab"
+  "connections_tab",
+  "payment_tab",
+  "payment_proof"
  ],
  "fields": [
   {
@@ -203,7 +206,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "SAL-ORD-.YYYY.-",
+   "options": "CAJ-.YYYY./SO/.MM./",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -310,7 +313,7 @@
    "hide_days": 1,
    "hide_seconds": 1,
    "in_list_view": 1,
-   "label": "Delivery Date",
+   "label": "Delivery / Pickup Date",
    "no_copy": 1
   },
   {
@@ -1648,13 +1651,34 @@
    "label": "Company Contact Person",
    "options": "Contact",
    "print_hide": 1
+  },
+  {
+   "fieldname": "payment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "payment_proof",
+   "fieldtype": "Attach",
+   "label": "Payment proof"
+  },
+  {
+   "fieldname": "delivery_method",
+   "fieldtype": "Select",
+   "label": "Delivery Method",
+   "options": "Pickup\nDelivery"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-11-26 12:42:06.872527",
+ "links": [
+  {
+   "link_doctype": "Payment Proof",
+   "link_fieldname": "sales_order"
+  }
+ ],
+ "modified": "2025-01-22 10:37:57.406808",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Sales Order",

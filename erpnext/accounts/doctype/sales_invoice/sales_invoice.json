@@ -246,7 +246,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "ACC-SINV-.YYYY.-\nACC-SINV-RET-.YYYY.-",
+   "options": "CAJ-.YYYY./INV/.MM./\nCAJ-.YYYY./CN/.MM./\nCAJ/01/.YY..MM..DD. CAJ/02/.YY..MM..DD.",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -2186,7 +2186,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2024-11-26 12:34:09.110690",
+ "modified": "2025-01-21 15:24:28.892818",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

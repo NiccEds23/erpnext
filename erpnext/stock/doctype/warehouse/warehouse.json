@@ -10,6 +10,7 @@
   "warehouse_detail",
   "disabled",
   "warehouse_name",
+  "show_as_pickup_warehouse",
   "column_break_3",
   "is_group",
   "parent_warehouse",
@@ -257,13 +258,19 @@
    "fieldname": "is_rejected_warehouse",
    "fieldtype": "Check",
    "label": "Is Rejected Warehouse"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_as_pickup_warehouse",
+   "fieldtype": "Check",
+   "label": "Show as Pickup Warehouse"
   }
  ],
  "icon": "fa fa-building",
  "idx": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2024-08-14 16:08:15.733597",
+ "modified": "2025-01-22 09:06:14.931926",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Warehouse",

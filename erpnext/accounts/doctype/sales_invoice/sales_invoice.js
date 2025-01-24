@@ -183,6 +183,9 @@ erpnext.accounts.SalesInvoiceController = class SalesInvoiceController extends (
 		}
 
 		erpnext.accounts.unreconcile_payment.add_unreconcile_btn(me.frm);
+
+		if (doc.name.includes("new-sales-invoice"))
+			this.set_default_naming_series(doc);
 	}
 
 	make_maintenance_schedule() {
@@ -558,6 +561,26 @@ erpnext.accounts.SalesInvoiceController = class SalesInvoiceController extends (
 		}
 
 		this.calculate_taxes_and_totals();
+	}
+
+	set_default_naming_series(doc) {
+		// Set default naming series
+		if (doc.is_return === 1) {
+			this.frm.set_df_property('naming_series', 'options', ['CAJ-.YYYY./CN/.MM./'])
+			this.frm.set_value('naming_series', 'CAJ-.YYYY./CN/.MM./')
+		}
+		else if (doc.tax_category === 'FP') {
+			this.frm.set_df_property('naming_series', 'options', ['CAJ-.YYYY./INV/.MM./'])
+			this.frm.set_value('naming_series', 'CAJ-.YYYY./INV/.MM./')
+		}
+		else if (doc.tax_category === 'NON-FP') {
+			this.frm.set_df_property('naming_series', 'options', ['CAJ/01/.YY..MM..DD.', 'CAJ/02/.YY..MM..DD.'])
+			this.frm.set_value('naming_series', 'CAJ/01/.YY..MM..DD.')
+		}
+		else {
+			this.frm.set_df_property('naming_series', 'options', ['CAJ-.YYYY./INV/.MM./', 'CAJ/01/.YY..MM..DD.', 'CAJ/02/.YY..MM..DD.'])
+			this.frm.set_value('naming_series', 'CAJ-.YYYY./INV/.MM./')
+		}
 	}
 };
 
@@ -1042,6 +1065,12 @@ frappe.ui.form.on("Sales Invoice", {
 		}
 	},
 
+	tax_category: function (frm) {
+		if (frm.doc.name.includes("new-sales-invoice")) {
+			frm.cscript.set_default_naming_series(frm.doc);
+		}
+	},
+
 	create_invoice_discounting: function (frm) {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.accounts.doctype.sales_invoice.sales_invoice.create_invoice_discounting",
@@ -1102,7 +1131,7 @@ var select_loyalty_program = function (frm, loyalty_programs) {
 				fieldname: "loyalty_program",
 				value: dialog.get_value("loyalty_program"),
 			},
-			callback: function (r) {},
+			callback: function (r) { },
 		});
 	});
 

@@ -29,6 +29,7 @@ class Warehouse(NestedSet):
 		disabled: DF.Check
 		email_id: DF.Data | None
 		is_group: DF.Check
+		is_rejected_warehouse: DF.Check
 		lft: DF.Int
 		mobile_no: DF.Data | None
 		old_parent: DF.Link | None
@@ -36,6 +37,7 @@ class Warehouse(NestedSet):
 		phone_no: DF.Data | None
 		pin: DF.Data | None
 		rgt: DF.Int
+		show_as_pickup_warehouse: DF.Check
 		state: DF.Data | None
 		warehouse_name: DF.Data
 		warehouse_type: DF.Link | None

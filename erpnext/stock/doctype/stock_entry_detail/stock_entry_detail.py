@@ -39,6 +39,7 @@ class StockEntryDetail(Document):
 		job_card_item: DF.Data | None
 		material_request: DF.Link | None
 		material_request_item: DF.Link | None
+		naming_series: DF.Literal[".MM.-"]
 		original_item: DF.Link | None
 		parent: DF.Data
 		parentfield: DF.Data

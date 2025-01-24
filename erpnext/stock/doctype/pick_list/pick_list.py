@@ -39,9 +39,8 @@ class PickList(Document):
 	from typing import TYPE_CHECKING
 
 	if TYPE_CHECKING:
-		from frappe.types import DF
-
 		from erpnext.stock.doctype.pick_list_item.pick_list_item import PickListItem
+		from frappe.types import DF
 
 		amended_from: DF.Link | None
 		company: DF.Link
@@ -55,6 +54,7 @@ class PickList(Document):
 		material_request: DF.Link | None
 		naming_series: DF.Literal["STO-PICK-.YYYY.-"]
 		parent_warehouse: DF.Link | None
+		pic: DF.Data | None
 		pick_manually: DF.Check
 		prompt_qty: DF.Check
 		purpose: DF.Literal["Material Transfer for Manufacture", "Material Transfer", "Delivery"]
@@ -1092,6 +1092,7 @@ def create_delivery_note(source_name, target_doc=None):
 	sales_dict = dict()
 	sales_orders = []
 	delivery_note = None
+	
 	for location in pick_list.locations:
 		if location.sales_order:
 			sales_orders.append(

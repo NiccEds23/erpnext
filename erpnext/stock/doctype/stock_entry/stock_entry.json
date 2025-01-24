@@ -25,6 +25,7 @@
   "company",
   "posting_date",
   "posting_time",
+  "qc_by",
   "column_break_eaoa",
   "set_posting_time",
   "inspection_required",
@@ -123,7 +124,6 @@
    "fieldname": "purpose",
    "fieldtype": "Select",
    "hidden": 1,
-   "in_list_view": 1,
    "label": "Purpose",
    "oldfieldname": "purpose",
    "oldfieldtype": "Select",
@@ -211,6 +211,7 @@
    "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Posting Date",
    "no_copy": 1,
    "oldfieldname": "posting_date",
@@ -690,6 +691,11 @@
    "fieldtype": "Tab Break",
    "label": "Connections",
    "show_dashboard": 1
+  },
+  {
+   "fieldname": "qc_by",
+   "fieldtype": "Data",
+   "label": "QC By"
   }
  ],
  "icon": "fa fa-file-text",
@@ -697,7 +703,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-13 19:05:42.386955",
+ "modified": "2025-01-10 13:58:51.951821",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry",

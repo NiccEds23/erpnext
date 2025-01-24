@@ -183,7 +183,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "PUR-ORD-.YYYY.-",
+   "options": "CAJ-.YYYY./PO/.MM./.DD.",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -1275,7 +1275,7 @@
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-20 16:03:31.611808",
+ "modified": "2025-01-21 15:19:14.976947",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

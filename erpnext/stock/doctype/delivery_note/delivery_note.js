@@ -122,6 +122,7 @@ frappe.ui.form.on("Delivery Note", {
 				);
 			}
 		}
+
 	},
 });
 
@@ -310,6 +311,9 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends (
 			);
 		}
 		erpnext.stock.delivery_note.set_print_hide(doc, dt, dn);
+
+		if (doc.name.includes("new-delivery-note"))
+			this.set_default_naming_series(doc);
 	}
 
 	make_shipment() {
@@ -380,6 +384,26 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends (
 				frappe.ui.form.is_saving = false;
 			},
 		});
+	}
+
+	set_default_naming_series(doc) {
+		// Set default naming series
+		if (doc.customer === 'Internal Transfer') {
+			frm.set_df_property('naming_series', 'options', ['MAT-TF-.YYYY.'])
+			frm.set_value('naming_series', 'MAT-TF-.YYYY.')
+		}
+		else if (doc.tax_category === 'FP') {
+			frm.set_df_property('naming_series', 'options', ['CAJ-.YYYY./DO/.MM./'])
+			frm.set_value('naming_series', 'CAJ-.YYYY./DO/.MM./')
+		}
+		else if (doc.tax_category === 'NON-FP') {
+			frm.set_df_property('naming_series', 'options', ['CAJ/01/.YY..MM..DD.', 'CAJ/02/.YY..MM..DD.'])
+			frm.set_value('naming_series', 'CAJ/01/.YY..MM..DD.')
+		}
+		else {
+			frm.set_df_property('naming_series', 'options', ['MAT-TF-.YYYY.', 'MAT-TF-RET-.YYYY.', 'CAJ-.YYYY./DO/.MM./', 'CAJ/01/.YY..MM..DD.', 'CAJ/02/.YY..MM..DD.'])
+			frm.set_value('naming_series', 'MAT-TF-.YYYY.')
+		}
 	}
 };
 
